@@ -6,7 +6,7 @@
 			if multiChunks.length > 0
 				h2 Module in multiple chunks
 				p Check if it is a good idea to move modules into a common parent. You may want to use <code>require.include</code> or insert them into the parents <code>require.ensure</code> array.
-				table.table.table-bordered
+				table.table-hover.table.table-bordered
 					thead
 						tr
 							th Module
@@ -44,7 +44,7 @@
 					var a = xyz.a;
 					var a = xyz.b;
 					var c = xyz.c;
-				table.table.table-bordered
+				table.table-hover.table.table-bordered
 					thead
 						tr
 							th Module
@@ -74,7 +74,7 @@
 				h2 Long module build chains
 				p Use prefetching to increase build performance. Prefetch a module from the middle of the chain.
 				for chain in longChains
-					table.table.table-bordered
+					table.table-hover.table.table-bordered
 						thead
 							tr
 								th Module
