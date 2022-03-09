@@ -1,6 +1,21 @@
+:root {
+	--font-system-mono: "SF Mono", "Monaco", "Inconsolata", "Droid Sans Mono",
+		"Roboto Mono", monospace;
+}
+
+body {
+	font-family: var(--font-system-mono);
+}
+
+code,
+pre {
+	font-family: var(--font-system-mono) !important;
+}
+
 table pre {
 	margin-bottom: 0px;
 }
+
 .sortable-th {
 	cursor: pointer;
 }
