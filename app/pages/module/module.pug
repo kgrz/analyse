@@ -76,32 +76,36 @@
 							td
 								if reason.loc
 									code= reason.loc
-	.row
-		.col-md-12: .well
-			h4 dependencies
-			table.table
-				thead
-					tr
-						th type
-						th(colspan=2) module
-						th user request
-						th location
-				tbody
-					each dependency in module.dependencies
+	if module.dependencies.length
+		.row
+			.col-md-12: .well
+				h4 dependencies
+				table.table
+					thead
 						tr
-							td= dependency.type
-							td(style="width: 1px")
-								if typeof dependency.moduleUid === "number"
-									a(href=`#module/${dependency.moduleUid}`)= dependency.moduleId
-								else
-									span.btn.btn-success= dependency.moduleId
-							td: if dependency.module
-								pre: code= dependency.module.split("!").join("\n")
-							td: if dependency.userRequest
-								pre: code= dependency.userRequest.split("!").join("\n")
-							td
-								if dependency.loc
-									code= dependency.loc
-	.row
-		.col-md-12
-			pre: code= module.source
+							th type
+							th(colspan=2) module
+							th user request
+							th location
+					tbody
+						each dependency in module.dependencies
+							tr
+								td= dependency.type
+								td(style="width: 1px")
+									if typeof dependency.moduleUid === "number"
+										a(href=`#module/${dependency.moduleUid}`)= dependency.moduleId
+									else
+										span.btn.btn-success= dependency.moduleId
+								td: if dependency.module
+									pre: code= dependency.module.split("!").join("\n")
+								td: if dependency.userRequest
+									pre: code= dependency.userRequest.split("!").join("\n")
+								td
+									if dependency.loc
+										code= dependency.loc
+	else
+		h4 No other dependencies
+	if module.source
+		.row
+			.col-md-12
+				pre: code= module.source
