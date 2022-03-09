@@ -1,15 +1,11 @@
 var app = require("../../app");
-var chunksGraph = require("../../graphs/chunks");
 
-module.exports = function() {
+module.exports = function () {
 	document.title = "chunks";
 	$(".page").html(
 		require("./chunks.pug")({
-			stats: app.stats
+			stats: app.stats,
 		})
 	);
-	chunksGraph.show();
-	return function() {
-		chunksGraph.hide();
-	};
+	return function () {};
 };
