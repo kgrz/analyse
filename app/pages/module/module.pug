@@ -51,13 +51,13 @@
 							span= issuer.id
 					td: pre: code= issuer.name.split("!").join("\n")
 	.row
-		.col-md-12: .well
+		.col-md-12
 			h4 Reasons
 			table.table-hover.table.table-condensed
 				thead
 					tr
 						th Type
-						th(colspan=2) Module
+						th Module
 						th User Request
 						th Location
 				tbody
@@ -66,25 +66,27 @@
 							td= reason.type
 							td(style="width: 1px")
 								if typeof reason.moduleUid === "number"
-									a(href=`#module/${reason.moduleUid}`)= reason.moduleId
+									a(href=`#module/${reason.moduleUid}`)
+										= `${reason.module.split("!").join("\n")} (${reason.moduleId})`
 								else
-									span= reason.moduleId
-							td: if reason.module
-								pre: code= reason.module.split("!").join("\n")
+									span
+										= `${reason.module.split("!").join("\n")} (${reason.moduleId})`
 							td: if reason.userRequest
-								pre: code= reason.userRequest.split("!").join("\n")
+								ul.list-unstyled
+									each request in reason.userRequest.split('!')
+										li= request
 							td
 								if reason.loc
-									code= reason.loc
+									= reason.loc
 	if module.dependencies.length
 		.row
-			.col-md-12: .well
+			.col-md-12
 				h4 Dependencies
 				table.table-hover.table
 					thead
 						tr
 							th Type
-							th(colspan=2) Module
+							th Module
 							th User Request
 							th Location
 					tbody
@@ -93,13 +95,13 @@
 								td= dependency.type
 								td(style="width: 1px")
 									if typeof dependency.moduleUid === "number"
-										a(href=`#module/${dependency.moduleUid}`)= dependency.moduleId
+										a(href=`#module/${dependency.moduleUid}`)
+											= `${dependency.module.split("!").join("\n")} (${dependency.moduleId})`
 									else
-										span.btn.btn-success= dependency.moduleId
-								td: if dependency.module
-									pre: code= dependency.module.split("!").join("\n")
+										span
+											= `${dependency.module.split("!").join("\n")} (${dependency.moduleId})`
 								td: if dependency.userRequest
-									pre: code= dependency.userRequest.split("!").join("\n")
+									= dependency.userRequest.split("!").join("\n")
 								td
 									if dependency.loc
 										code= dependency.loc
