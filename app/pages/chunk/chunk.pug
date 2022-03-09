@@ -1,47 +1,47 @@
 .container-fluid
 	.row
 		.col-md-4: .well
-			h4 chunk id
+			h4 Chunk ID
 			= id
 		.col-md-4: .well
-			h4 size
+			h4 Size
 			= require("../../formatSize")(chunk.size)
 		.col-md-4: .well
-			h4 names
+			h4 Names
 			each name in chunk.names
 				code= name
 	.row
 		if chunk.parents.length && chunk.children.length
 			.col-md-3: .well
-				h4 parents
+				h4 Parents
 				each parent in chunk.parents
 					a(href=`#chunk/${parent}`)= parent
 					= " "
 			.col-md-3: .well
-				h4 children
+				h4 Children
 				each child in chunk.children
 					a(href=`#chunk/${child}`)= child
 					= " "
 		else if chunk.parents.length
 			.col-md-6: .well
-				h4 parents
+				h4 Parents
 				each parent in chunk.parents
 					a(href=`#chunk/${parent}`)= parent
 					= " "
 		else if chunk.children.length
 			.col-md-6: .well
-				h4 children
+				h4 Children
 				each child in chunk.children
 					a(href=`#chunk/${child}`)= child
 					= " "
 		.col-md-6: .well
-			h4 files
+			h4 Files
 			each file in chunk.files
 				a(href="#assets")= file
 				= " "
 	.row
 		.col-md-12: .well
-			h4 origins
+			h4 Origins
 			table.table-hover.table.table-condensed
 				thead
 					tr
@@ -69,7 +69,7 @@
 									code= origin.loc
 	if chunk.modules && chunk.modules.length > 0
 		.row: .col-md-12: .well
-			h4 modules
+			h4 Modules
 			table.table-hover.table.table-condensed
 				thead
 					tr

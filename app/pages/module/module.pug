@@ -5,7 +5,7 @@
 				td: a.disabled(href=`#module/${module.uid}`)= module.id
 				td: pre: code= module.name.split("!").join("\n")
 		.col-md-3: .well
-			h4 time
+			h4 Time
 			if module.time
 				code= module.time + "ms"
 				if module.timestamp
@@ -14,11 +14,11 @@
 			else
 				| Compile with <code>--profile</code>.
 		.col-md-3: .well
-			h4 size
+			h4 Size
 			= require("../../formatSize")(module.size)
 	.row
 		.col-md-3: .well
-			h4 flags
+			h4 Flags
 			if module.built
 				span.label.label-success built
 				= " "
@@ -37,12 +37,12 @@
 			if module.errors
 				span.label.label-danger= module.errors + " errors"
 		.col-md-3: .well
-			h4 chunks
+			h4 Chunks
 			each chunk in module.chunks
 				a(href=`#chunk/${chunk}`)= chunk
 		.col-md-6: .well
 			if issuer
-				h4 issuer
+				h4 Issuer
 				table(width="100%"): tbody: tr
 					td
 						if typeof issuer.uid === "number"
@@ -52,7 +52,7 @@
 					td: pre: code= issuer.name.split("!").join("\n")
 	.row
 		.col-md-12: .well
-			h4 reasons
+			h4 Reasons
 			table.table-hover.table.table-condensed
 				thead
 					tr
@@ -79,7 +79,7 @@
 	if module.dependencies.length
 		.row
 			.col-md-12: .well
-				h4 dependencies
+				h4 Dependencies
 				table.table-hover.table
 					thead
 						tr
